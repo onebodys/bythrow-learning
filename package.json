@@ -1,0 +1,19 @@
+{
+	"name": "byethrow-learning",
+	"module": "index.ts",
+	"type": "module",
+	"scripts": {
+		"test": "oxlint-tsgolint"
+	},
+	"private": true,
+	"devDependencies": {
+		"@biomejs/biome": "2.2.6",
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@praha/byethrow": "^0.8.0"
+	}
+}
