@@ -9,13 +9,14 @@ The codebase is a Bun-first TypeScript workspace. `index.ts` is the runnable sho
 ## Build, Test, and Development Commands
 - `bun install` — install dependencies recorded in `bun.lock` so everyone exercises the same versions.
 - `bun run index.ts` — execute the sample flow; use it to validate new scenarios or logging tweaks.
-- `bun run test` — run the `oxlint-tsgolint` static checks; this is our required passing gate before opening a PR. Add new lint rules inside `biome.json` when needed and ensure this command stays green.
+- `bunx biome check .` — run the Biome formatter/linter locally; keep the tree clean before committing.
+- `bun run db:seed` / `bun run db:demo` — refresh the SQLite sample data and execute the Drizzle + Result walkthrough end to end.
 
 ## Coding Style & Naming Conventions
-Biome enforces tab indentation and double-quoted strings; run `bun run test` or `biome format <file>` before committing if your editor is not already configured. TypeScript modules should default-export the primary learning surface and keep supporting utilities named with a lowerCamelCase verb (for example, `buildErrorMap`). Prefer explicit return types for exported functions and co-locate error schemas in `errors.ts` to centralize handling. Keep imports sorted; Biome’s `organizeImports` assist is enabled. Write every inline code comment in Japanese so learners can follow along easily.
+Biome enforces tab indentation and double-quoted strings; run `bunx biome format <file>` or `bunx biome check .` before committing if your editor is not already configured. TypeScript modules should default-export the primary learning surface and keep supporting utilities named with a lowerCamelCase verb (for example, `buildErrorMap`). Prefer explicit return types for exported functions and co-locate error schemas in `errors.ts` to centralize handling. Keep imports sorted; Biome’s `organizeImports` assist is enabled. Write every inline code comment in Japanese so learners can follow along easily.
 
 ## Testing Guidelines
-Static analysis currently serves as the baseline quality gate. When adding behavioral coverage, place tests beside their targets using the `moduleName.test.ts` pattern and always execute them with `bun test`. Target failure paths—throw branches, Zod parsing, and async fallbacks—so tutorials remain trustworthy. Include inline fixtures rather than relying on external assets to keep tests fast. Follow t-wada's test-driven development loop: Red -> Green -> Refactor.
+Static analysis currently serves as the baseline quality gate. When adding behavioral coverage, place tests beside their targets using the `moduleName.test.ts` pattern and run them with `bun test`. Target failure paths—throw branches, Zod parsing, and async fallbacks—so tutorials remain trustworthy. Include inline fixtures rather than relying on external assets to keep tests fast. Follow t-wada's test-driven development loop: Red -> Green -> Refactor.
 
 ## Commit & Pull Request Guidelines
 Past commits (`impl transforming`, `impl async-operations`) show short imperative prefixes; continue with succinct verbs plus the touched module (e.g., `impl parse-number guard`). One feature per commit keeps reviews focused. Pull requests should describe the learning goal, list any new commands/env steps, and attach console output or screenshots for new sample runs. Confirm `bun run test` passes before requesting review, and link issues or discussions when applicable.

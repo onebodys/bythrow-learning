@@ -3,7 +3,6 @@
 	"module": "index.ts",
 	"type": "module",
 	"scripts": {
-		"test": "oxlint-tsgolint",
 		"db:seed": "bun run scripts/seed.ts",
 		"db:demo": "bun run database-operations.ts"
 	},
