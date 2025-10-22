@@ -3,7 +3,9 @@
 	"module": "index.ts",
 	"type": "module",
 	"scripts": {
-		"test": "oxlint-tsgolint"
+		"test": "oxlint-tsgolint",
+		"db:seed": "bun run scripts/seed.ts",
+		"db:demo": "bun run database-operations.ts"
 	},
 	"private": true,
 	"devDependencies": {
@@ -14,6 +16,9 @@
 		"typescript": "^5"
 	},
 	"dependencies": {
-		"@praha/byethrow": "^0.8.0"
+		"@praha/byethrow": "^0.8.0",
+		"@praha/error-factory": "^1.2.1",
+		"drizzle-orm": "0.31.0",
+		"zod": "^4.1.12"
 	}
 }
